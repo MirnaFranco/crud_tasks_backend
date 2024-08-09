@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const taskRoutes = require('./routes/tareas.routes');
+import  express from 'express';
+import bodyParser from 'body-parser';
+import taskRoutes from './routes/tareas.routes.js';
 
 const app = express();
 

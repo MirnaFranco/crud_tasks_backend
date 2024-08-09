@@ -1,6 +1,6 @@
-const Task = require('../models/taskModel');
+import Task from '../models/taskModel.js';
 
-const getAllTasks = async (req, res) => {
+export const getAllTasks = async (req, res) => {
     try {
         const [tasks] = await Task.getAll();
         res.status(200).json(tasks);
@@ -9,7 +9,7 @@ const getAllTasks = async (req, res) => {
     }
 };
 
-const getTaskById = async (req, res) => {
+export const getTaskById = async (req, res) => {
     const { id } = req.params;
     try {
         const [tasks] = await Task.getById(id);
@@ -22,7 +22,7 @@ const getTaskById = async (req, res) => {
     }
 };
 
-const createTask = async (req, res) => {
+export const createTask = async (req, res) => {
     const { title, description, isComplete } = req.body;
 
     if (typeof title !== 'string' || title.trim() === '' || title.length > 255) {
@@ -43,7 +43,7 @@ const createTask = async (req, res) => {
     }
 };
 
-const updateTask = async (req, res) => {
+export const updateTask = async (req, res) => {
     const { id } = req.params;
     const { title, description, isComplete } = req.body;
 
@@ -68,7 +68,7 @@ const updateTask = async (req, res) => {
     }
 };
 
-const deleteTask = async (req, res) => {
+export const deleteTask = async (req, res) => {
     const { id } = req.params;
     try {
         const [result] = await Task.delete(id);
@@ -81,10 +81,4 @@ const deleteTask = async (req, res) => {
     }
 };
 
-module.exports = {
-    getAllTasks,
-    getTaskById,
-    createTask,
-    updateTask,
-    deleteTask
-};
+
